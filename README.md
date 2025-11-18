@@ -49,8 +49,7 @@
 
 <details>
   <summary>Simple examples</summary>
-
-```ts
+  
 // interface example
 interface Person {
   name: string;
@@ -61,3 +60,37 @@ type Student = {
   name: string;
   roll: number;
 };
+
+</details>
+
+
+
+
+<h2>2️⃣ What is <code>keyof</code> and how to use it?</h2> <p><code>keyof</code> extracts all keys of an object type as a union of string literal types. It's useful for writing type-safe utilities and functions that accept only valid keys of a type.</p> <pre><code class="language-typescript"> // Given an interface interface User { name: string; age: number; email: string; } // keyof extracts "name" | "age" | "email" type UserKeys = keyof User; // "name" | "age" | "email" function getUserValue(obj: User, key: keyof User) { return obj[key]; } const user: User = { name: "Riyad", age: 22, email: "riyad@example.com", }; console.log(getUserValue(user, "email")); // valid // getUserValue(user, "address"); // ❌ Error: "address" is not a key of User </code></pre>
+<h2>3️⃣ Quick Summary</h2> <ul> <li><strong>interface</strong> — best for describing object shapes and class contracts; supports declaration merging.</li> <li><strong>type</strong> — more flexible; can describe unions, intersections, primitives, and complex mapped types.</li> <li><strong>keyof</strong> — extracts keys of a type as a union of string literals; useful for type-safe key-based utilities.</li> </ul>
+<h2>4️⃣ Copy-ready Code Snippets</h2> <details> <summary>TypeScript snippets (click to expand)</summary>
+
+// interface vs type
+interface Person {
+  name: string;
+}
+
+type Student = {
+  name: string;
+  roll: number;
+};
+
+// keyof example
+interface User {
+  name: string;
+  age: number;
+  email: string;
+}
+
+type UserKeys = keyof User; // "name" | "age" | "email"
+
+function getUserValue(obj: User, key: keyof User) {
+  return obj[key];
+}
+</details>
+<p>If you want this README converted to pure HTML file, or want a shorter LinkedIn-sized post version, tell me which one and I’ll generate it right away.</p> ```
